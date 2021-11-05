@@ -1,0 +1,82 @@
+// Girilen Sayilarin Asal Sayi Olup Olmadigini Bulma
+
+function isPrime(...number) {
+    number.map(num => {
+        if (num == 2) {
+            console.log(num + " is Prime")
+        } else if (num < 2) {
+            console.log(num + " is not Prime")
+        } else if ((2 ** num) % num == 2) {
+            console.log(num + " is Prime")
+        } else {
+            console.log(num + " is not Prime")
+        }
+    }
+    )
+}
+isPrime(1, 3, 4, 7, 56, 678)
+
+// Girilen Iki Rakamin Arkadas Sayi Olup Olmadigini Bulma
+
+function arkadasSayiBulma(num1, num2) {
+
+    let num1List = [];
+    let num2List = [];
+    let sumNum1List, sumNum2List = 0;
+    for (i = 1; i < num1; i++) {
+        if (num1 % i == 0) {
+            num1List.push(i);
+            sumNum1List = num1List.reduce(function (a, b) {
+                return a + b;
+            }, 0)
+        }
+    }
+    for (j = 1; j < num2; j++) {
+        if (num2 % j == 0) {
+            num2List.push(j);
+            sumNum2List = num2List.reduce(function (a, b) {
+                return a + b;
+            }, 0)
+        }
+    }
+
+    if ((sumNum1List == num2) && (sumNum2List == num1)) {
+        console.log(num1 + " & " + num2 + " Arkadas Sayilardir")
+    } else {
+        console.log(num1 + " & " + num2 + " Arkadas Sayi Degillerdir")
+    }
+}
+arkadasSayiBulma(2, 6)
+arkadasSayiBulma(220, 284)
+
+//1000'den Kucuk Mukemmel Sayi Bulma
+
+function mukemmelSayiListele() {
+    for (let num = 1; num < 1001; num++) {
+        let sum = 0;
+        for (let multi = 1; multi < num; multi++) {
+            if (num % multi == 0) {
+                sum += multi
+            }
+        }
+        if (sum == num) {
+            console.log(num + " mukemmel sayidir. ")
+        }
+    }
+}
+mukemmelSayiListele()
+
+//1000'den Kucuk Asal Sayilari Listeleme
+
+function asalSayiListele() {
+    for (sayi = 2; sayi < 1000; sayi++) {
+        for (carpan = 2; carpan < sayi; carpan++) {
+            if (sayi % carpan === 0)
+                break;
+        }
+        if (sayi === carpan)
+            console.log(sayi);
+
+    }
+}
+asalSayiListele()
